@@ -10,6 +10,7 @@ import TodoList from '@/components/Todo/List'
 import AddTodo from '@/components/Todo/Add'
 import Await from '@/components/Await'
 import getTodos from '@/lib/getTodos'
+import Scrollable from '@/components/Scrollable'
 
 const url = process.env.NEXT_PUBLIC_ORIGIN
 const title = 'todo'
@@ -43,7 +44,7 @@ const HomePage = async () => {
 	const todos = getTodos()
 
 	return (
-		<div className="flex flex-col h-full overflow-y-auto">
+		<Scrollable>
 			<main className="flex flex-col justify-center items-center gap-4 w-[95%] m-auto py-4">
 				<SetHomeState todos={todos} />
 				<h1 className="text-5xl font-black">todo</h1>
@@ -55,7 +56,7 @@ const HomePage = async () => {
 				</Suspense>
 				<AddTodo />
 			</main>
-		</div>
+		</Scrollable>
 	)
 }
 

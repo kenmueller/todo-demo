@@ -8,16 +8,18 @@ import {
 	useRef,
 	useState
 } from 'react'
-import { useSetRecoilState } from 'recoil'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 
 import todosState from '@/lib/atoms/todos'
 import errorFromResponse from '@/lib/error/fromResponse'
 import errorFromUnknown from '@/lib/error/fromUnknown'
 import HttpError from '@/lib/error/http'
+import scrollableState from '@/lib/atoms/scrollable'
 
 const AddTodo = () => {
 	const setTodos = useSetRecoilState(todosState)
 
+	const scrollable = useRecoilValue(scrollableState)
 	const input = useRef<HTMLInputElement | null>(null)
 
 	const [name, setName] = useState('')
@@ -45,9 +47,12 @@ const AddTodo = () => {
 				setError(errorFromUnknown(unknownError))
 			} finally {
 				setIsLoading(false)
+
+				if (scrollable.current)
+					scrollable.current.scrollTop = scrollable.current.scrollHeight
 			}
 		},
-		[setTodos, name, setName, setIsLoading, setError]
+		[setTodos, name, setName, setIsLoading, setError, scrollable]
 	)
 
 	const onChange = useCallback(

@@ -4,6 +4,7 @@ if (!process.env.NEXT_PUBLIC_ORIGIN)
 import { Metadata } from 'next'
 
 import preview from '@/assets/preview.jpg'
+import Scrollable from '@/components/Scrollable'
 
 const url = `${process.env.NEXT_PUBLIC_ORIGIN}/about`
 const title = 'about | todo'
@@ -34,11 +35,11 @@ export const metadata: Metadata = {
 }
 
 const AboutPage = async () => (
-	<div className="flex flex-col h-full overflow-y-auto">
+	<Scrollable>
 		<main className="flex flex-col justify-center items-center gap-4 w-[95%] m-auto py-4">
 			<h1 className="text-5xl font-black">About</h1>
 		</main>
-	</div>
+	</Scrollable>
 )
 
 export default AboutPage
