@@ -43,17 +43,19 @@ const HomePage = async () => {
 	const todos = getTodos()
 
 	return (
-		<main className="flex flex-col justify-center items-center gap-4">
-			<SetHomeState todos={todos} />
-			<h1 className="text-5xl font-black">todo</h1>
-			<Suspense fallback={<p>Loading...</p>}>
-				{/* @ts-expect-error */}
-				<Await promise={todos}>
-					<TodoList />
-				</Await>
-			</Suspense>
-			<AddTodo />
-		</main>
+		<div className="flex flex-col h-full overflow-y-auto">
+			<main className="flex flex-col justify-center items-center gap-4 w-[95%] m-auto py-4">
+				<SetHomeState todos={todos} />
+				<h1 className="text-5xl font-black">todo</h1>
+				<Suspense fallback={<p>Loading...</p>}>
+					{/* @ts-expect-error */}
+					<Await promise={todos}>
+						<TodoList />
+					</Await>
+				</Suspense>
+				<AddTodo />
+			</main>
+		</div>
 	)
 }
 

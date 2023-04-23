@@ -34,9 +34,11 @@ export const metadata: Metadata = {
 }
 
 const AboutPage = async () => (
-	<main className="flex flex-col justify-center items-center gap-4">
-		<h1 className="text-5xl font-black">About</h1>
-	</main>
+	<div className="flex flex-col h-full overflow-y-auto">
+		<main className="flex flex-col justify-center items-center gap-4 w-[95%] m-auto py-4">
+			<h1 className="text-5xl font-black">About</h1>
+		</main>
+	</div>
 )
 
 export default AboutPage

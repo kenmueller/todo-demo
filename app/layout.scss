@@ -6,6 +6,7 @@
 ::before,
 ::after {
 	@apply break-words;
+	word-break: break-word;
 }
 
 pre {
