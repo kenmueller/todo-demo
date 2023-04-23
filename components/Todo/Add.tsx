@@ -14,12 +14,12 @@ import todosState from '@/lib/atoms/todos'
 import errorFromResponse from '@/lib/error/fromResponse'
 import errorFromUnknown from '@/lib/error/fromUnknown'
 import HttpError from '@/lib/error/http'
-import scrollableState from '@/lib/atoms/scrollable'
+import scrollableRef from '@/lib/atoms/scrollable'
 
 const AddTodo = () => {
 	const setTodos = useSetRecoilState(todosState)
 
-	const scrollable = useRecoilValue(scrollableState)
+	const scrollable = useRecoilValue(scrollableRef)
 	const input = useRef<HTMLInputElement | null>(null)
 
 	const [name, setName] = useState('')
