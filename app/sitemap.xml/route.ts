@@ -18,7 +18,7 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" \
 xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 \
 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">\
 ${(await getPaths())
-	.map(path => `<url><loc>${encodeURI(`${url.origin}${path}`)}</loc></url>`)
+	.map(path => `<url><loc>${url.origin}${path}</loc></url>`)
 	.join('')}\
 </urlset>`,
 			{
