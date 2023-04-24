@@ -9,7 +9,7 @@ const Scrollable = ({ children }: { children?: ReactNode }) => {
 	const scrollable = useRecoilValue(scrollableRef)
 
 	return (
-		<div ref={scrollable} className="flex flex-col h-full overflow-y-auto">
+		<div ref={scrollable} className="flex flex-col overflow-y-auto">
 			{children}
 		</div>
 	)
