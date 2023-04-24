@@ -34,6 +34,8 @@ const sfMono = localFont({
 	fallback: ['Consolas', 'Liberation Mono', 'Menlo', 'Courier', 'monospace']
 })
 
+export const dynamic = 'force-dynamic'
+
 export const generateMetadata = () => baseMetadata()
 
 const RootLayout = ({ children }: { children: ReactNode }) => (
