@@ -9,7 +9,10 @@ import errorFromUnknown from '@/lib/error/fromUnknown'
 export const GET = async () => {
 	try {
 		await sleep(1000)
-		return NextResponse.json(Array.from(todos))
+
+		return NextResponse.json(Array.from(todos), {
+			headers: { 'cache-control': 'no-store' }
+		})
 	} catch (unknownError) {
 		const { code, message } = errorFromUnknown(unknownError)
 		return new NextResponse(message, { status: code })

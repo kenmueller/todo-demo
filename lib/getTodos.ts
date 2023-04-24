@@ -1,12 +1,10 @@
-import errorFromResponse from './error/fromResponse'
-
-if (!process.env.NEXT_PUBLIC_ORIGIN)
-	throw new Error('Missing NEXT_PUBLIC_ORIGIN')
+import errorFromResponse from '@/lib/error/fromResponse'
+import getUrl from '@/lib/getUrl'
 
 const getTodos = async () => {
-	const response = await fetch(`${process.env.NEXT_PUBLIC_ORIGIN!}/api/todos`, {
-		cache: 'no-store'
-	})
+	const url = getUrl()
+
+	const response = await fetch(`${url.origin}/api/todos`)
 
 	if (!response.ok) throw await errorFromResponse(response)
 

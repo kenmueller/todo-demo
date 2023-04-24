@@ -1,38 +1,13 @@
-if (!process.env.NEXT_PUBLIC_ORIGIN)
-	throw new Error('Missing NEXT_PUBLIC_ORIGIN')
-
-import { Metadata } from 'next'
-
 import preview from '@/assets/preview.jpg'
 import Scrollable from '@/components/Scrollable'
+import pageMetadata from '@/lib/metadata/page'
 
-const url = `${process.env.NEXT_PUBLIC_ORIGIN}/about`
-const title = 'about | todo'
-const description = 'about | todo'
-
-export const metadata: Metadata = {
-	alternates: { canonical: url },
-	title,
-	description,
-	openGraph: {
-		type: 'website',
-		title,
-		description,
-		siteName: 'todo',
-		locale: 'en_US',
-		url,
-		images: preview.src,
-		countryName: 'United States'
-	},
-	twitter: {
-		card: 'summary_large_image',
-		site: '@todo',
-		creator: '@todo',
-		title,
-		description,
-		images: preview.src
-	}
-}
+export const generateMetadata = () =>
+	pageMetadata({
+		title: 'todo',
+		description: 'todo',
+		image: preview.src
+	})
 
 const AboutPage = async () => (
 	<Scrollable>
